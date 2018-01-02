@@ -22,17 +22,6 @@ class Route
         }
         $this->routes = $newRoutes;
     }
-    // private function getRequest()
-    // {
-    //     $obj = new \stdClass;
-    //     foreach ($_GET as $key => $value){
-    //         @$obj->get->$key = $value;
-    //     }
-    //     foreach ($_POST as $key => $value){
-    //         @$obj->post->$key = $value;
-    //     }
-    //     return $obj;
-    // }
     private function getUrl()
     {
         return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
