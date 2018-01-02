@@ -9,6 +9,22 @@ class Route
         $this->setRoutes($routes);
         $this->run();
     }
+    private function getRequest()
+    {
+        $obj = new \stdClass;
+
+        foreach ($_GET as $key => $value)
+        {
+            $obj->get->$key = $value;
+        }
+
+        foreach ($_POST as $key => $value)
+        {
+            $obj->post->$key = $value;
+        }
+
+        return $obj;
+    }
     private function setRoutes($routes)
     {
         foreach ($routes as $route){
@@ -49,9 +65,25 @@ class Route
         }
         if(isset($found)){
             $controller = Container::newController($controller);
-            $controller->$action();
+            
+            switch (count($param)) {
+                case 1:
+                    $controller->$action($param[0], $this->getRequest());
+                    break;
+                case 2:
+                    $controller->$action($param[0], $params[1],$this->getRequest());
+                    break;
+                case 3:
+                    $controller->$action($param[0],$param[1],$param[2],$this->getRequest());
+                    break;
+                default:
+                    $controller->$action($this->getRequest());
+                    break;
+                }
+            }else{
+                echo "Casa caiu meu irmão";
+            }
         }
     }
-}
 
 
