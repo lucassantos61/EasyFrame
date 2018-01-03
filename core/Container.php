@@ -3,8 +3,8 @@ namespace Core;
 
 class Container
 {
-    public function newController($controller){
-        $objController = "\\App\\Controllers\\".$controller;
-        return new $objController;
+    public static function newController($controller){
+        $controller = "\\App\\Controllers\\".$controller;
+        return new $controller;
     }
 }
