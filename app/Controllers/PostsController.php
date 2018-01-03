@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Controllers;
+use Core\BaseCOntroller;
 
-class PostsController 
+class PostsController extends BaseController
 {
     public function index()
     {

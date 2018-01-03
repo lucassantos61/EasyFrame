@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Controllers;
+use Core\BaseController;
 
-class HomeController{
+class HomeController extends BaseController{
+
     public function index(){
-        echo "Home";
+        $this->view->nome = "Lucas Ferrira";
+       $this->renderView('home/index','layout');
     }
 }
