@@ -7,12 +7,14 @@ abstract class BaseController
     private $viewPath; 
     private $layoutPath;
     protected $view;
-   
+    private $pageTitle = '';
     public function __construct()
     {
         $this->view = new \stdClass();
     }
-
+    protected function putPageTitle($pageTitle,$separator = ''){
+            return $this->pageTitle = $pageTitle.' '.$separator;
+    }
     protected function renderView($viewPath,$layoutPath = null)
     {
         $this->viewPath = $viewPath;
@@ -20,11 +22,11 @@ abstract class BaseController
         {
             $this->layoutPath = $layoutPath;
             $this->layout();
+            
             return;
-
         }
-        $this->content();
-        return;
+            $this->content();
+            return;
     }
 
     protected function content()
@@ -32,10 +34,10 @@ abstract class BaseController
         if(file_exists(__DIR__."/../app/Views/{$this->viewPath}.phtml"))
         {
             require_once __DIR__."/../app/Views/{$this->viewPath}.phtml";
-            return true;
+            return ;
         }
         echo "404 doidão";
-        return false;
+        return ;
     }
     protected function layout()
     {
