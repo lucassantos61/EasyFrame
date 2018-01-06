@@ -12,8 +12,12 @@ abstract class BaseController
     {
         $this->view = new \stdClass();
     }
-    protected function putPageTitle($pageTitle,$separator = ''){
-            return $this->pageTitle = $pageTitle.' '.$separator;
+    protected function setPageTitle($pageTitle){
+        $this->pageTitle = $pageTitle;
+    }
+
+    protected function getPageTitle($separator = ''){
+            return $this->pageTitle.' '.$separator;
     }
     protected function renderView($viewPath,$layoutPath = null)
     {
