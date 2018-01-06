@@ -25,23 +25,26 @@ class Route
 
         return $obj;
     }
+
     private function setRoutes($routes)
     {
         foreach ($routes as $route){
             $explode = explode('@', $route[1]);
             if(isset($route[2])){
-                $r = [$route[0], $explode[0], $explode[1], $route[2]];
+                $params = [$route[0], $explode[0], $explode[1], $route[2]];
             }else{
-                $r = [$route[0], $explode[0], $explode[1]];
+                $params = [$route[0], $explode[0], $explode[1]];
             }
-            $newRoutes[] = $r;
+            $newRoutes[] = $params;
         }
         $this->routes = $newRoutes;
     }
+
     private function getUrl()
     {
         return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
+    
     private function run()
     {
         $url = $this->getUrl();
