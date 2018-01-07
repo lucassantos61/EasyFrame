@@ -1,16 +1,15 @@
 <?php
 
 return [
-    'driver' => 'sqllite',
+    'driver' => 'mysql',
 
     'sqlite' =>[
-        'host' => 'database.db',
-
+        'database' => 'database.db'
     ],
 
     'mysql' =>[ 
         'host' => 'localhost',
-        'database' => 'yourdb',
+        'database' => 'blog',
         'user' => 'root',
         'password' => '123',
         'charset' => 'utf8',
