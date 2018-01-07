@@ -84,7 +84,7 @@ class Route
                     break;
                 }
             }else{
-                echo "Casa caiu meu irmão";
+                Container::pageNotFound();
             }
         }
     }
