@@ -12,19 +12,18 @@ class PostsController extends BaseController
 {
     public function index()
     {
-
+        $this->SetPageTitle('Posts');
        $model = Container::getModel("Post");
-       $posts = $model->All();
+       $this->view->posts = $model->All();
+       $this->renderView('posts/index','layout');
 
-       print_r($posts);
     }
 
-    public function show($id,$request)
+    public function show($id)
     {
-        echo $id."<br/>";
-
-        echo $request->get->nome."<br/>";
-
-        echo $request->get->idade."<br/>";
+        $model = Container::getModel('Post');
+        $this->view->post = $model->find($id);
+        $this->setPageTitle("{$this->view->post->title}");
+        $this->renderView('posts/show','layout');
     }
 }
