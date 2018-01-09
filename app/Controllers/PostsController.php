@@ -12,11 +12,11 @@ class PostsController extends BaseController
 {
     public function index()
     {
-
+        $this->SetPageTitle('Posts');
        $model = Container::getModel("Post");
-       $posts = $model->All();
+       $this->view->posts = $model->All();
+       $this->renderView('posts/index','layout');
 
-       print_r($posts);
     }
 
     public function show($id,$request)
