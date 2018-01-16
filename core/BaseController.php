@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Container;
 abstract class BaseController
 {
     private $viewPath; 
@@ -42,8 +43,7 @@ abstract class BaseController
             require_once __DIR__."/../app/Views/{$this->viewPath}.phtml";
             return ;
         }
-        echo "404 doidão";
-        return ;
+        return Container::pageNotFound();
     }
     
     protected function layout()
@@ -53,7 +53,6 @@ abstract class BaseController
             require_once __DIR__."/../app/Views/{$this->layoutPath}.phtml";
             return ;
         }
-        echo "404 doidão";
-        return ;
+        return Container::pageNotFound();
     }
 }
