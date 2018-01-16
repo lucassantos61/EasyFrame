@@ -26,4 +26,15 @@ class PostsController extends BaseController
         $this->setPageTitle("{$this->view->post->title}");
         $this->renderView('posts/show','layout');
     }
+
+    public function create()
+    {
+        $this->setPageTitle('New Post');
+        $this->renderView('posts/create','layout');
+    }
+
+    public function store($request)
+    {
+        print_r($request->$post);
+    }
 }
